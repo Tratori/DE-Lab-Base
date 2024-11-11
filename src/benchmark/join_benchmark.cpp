@@ -21,8 +21,8 @@ struct JoinConfig
 
 void benchmark_join(JoinConfig &config, auto &results)
 {
-    auto probe_side = generate_uniform_vector<value_type>(config.probe_size, 0, 100000);
-    auto build_side = generate_uniform_vector<value_type>(config.build_size, 0, 100000);
+    auto probe_side = generate_uniform_vector<value_type>(config.probe_size, 0, 100000000);
+    auto build_side = generate_uniform_vector<value_type>(config.build_size, 0, 100000000);
 
     std::unique_ptr<JoinOperator<value_type>> join_operator;
 
