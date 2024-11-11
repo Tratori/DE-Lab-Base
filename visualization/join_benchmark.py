@@ -44,9 +44,11 @@ def plot_join_benchmark(metrics, labels):
 
             ax.set_title(f"{unique_id}")
             if y == len(metrics) - 1:
-                ax.set_xlabel("Build Size")
+                ax.set_xlabel("Build Size", fontsize=15)
             if i == 0:
-                ax.set_ylabel(label)
+                ax.set_ylabel(label, fontsize=15)
+            else:
+                ax.set_ylabel(" ")
             ax.set_yscale("log")
             ax.grid(True, zorder=0, axis="y")
             if not (i == 0 and y == 0):
@@ -66,7 +68,7 @@ def plot_join_benchmark(metrics, labels):
         shadow=True,
         fontsize=12,
     )
-    # plt.savefig("join_benchmark.png")
+    plt.savefig("join_benchmark.png")
     plt.show()
 
 
