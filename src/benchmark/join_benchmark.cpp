@@ -31,9 +31,17 @@ void benchmark_join(JoinConfig &config, auto &results)
     {
         join_operator = std::make_unique<HashJoin<value_type>>(build_side, probe_side);
     }
+    else if (config.algo == "hash_inverted")
+    {
+        join_operator = std::make_unique<HashJoin<value_type>>(probe_side, build_side);
+    }
     else if (config.algo == "nested_loop")
     {
         join_operator = std::make_unique<NestedLoopJoin<value_type>>(build_side, probe_side);
+    }
+    else if (config.algo == "nested_loop_inverted")
+    {
+        join_operator = std::make_unique<NestedLoopJoin<value_type>>(probe_side, build_side);
     }
     else
     {
@@ -59,7 +67,7 @@ int main(int argc, char **argv)
     benchmark_config.add_options()
         ("probe_size", "Number of elements in probe side", cxxopts::value<std::vector<size_t>>()->default_value("10000000"))
         ("build_size", "Number of elements in build side", cxxopts::value<std::vector<size_t>>()->default_value("100"))
-        ("algo", "Algorithm to use (hash, nested_loop)", cxxopts::value<std::vector<std::string>>()->default_value("hash,nested_loop"))
+        ("algo", "Algorithm to use (hash, hash_inverted, nested_loop, nested_loop_inverted)", cxxopts::value<std::vector<std::string>>()->default_value("hash,hash_inverted,nested_loop,nested_loop_inverted"))
         ("out", "filename", cxxopts::value<std::vector<std::string>>()->default_value("join_benchmark.json"));
     // clang-format on
     benchmark_config.parse(argc, argv);

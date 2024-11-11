@@ -37,8 +37,8 @@ for node_conf in ${node_config[@]}; do
 	#SBATCH --nodelist=${nodenames[$node_conf]}
 	#SBATCH --nodes=1
 	#SBATCH --cpus-per-task=${num_cpus[$node_conf]}
-	#SBATCH --time=36:00:00
-	#SBATCH --container-image=${HOME}/${images[${arch[$node_conf]}]}
+	#SBATCH --time=${TIME}
+	#SBATCH --container-image=${IMAGES_DIR}/${images[${arch[$node_conf]}]}
 	#SBATCH --container-mounts=${PROJECT_PATH}:${PROJECT_PATH}
 	#SBATCH --output=${OUTPUT_DIR}/output.log
 	#SBATCH --error=${OUTPUT_DIR}/error.log

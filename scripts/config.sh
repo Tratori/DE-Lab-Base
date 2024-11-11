@@ -3,6 +3,7 @@
 PROJECT_PATH="$(dirname $(dirname "$(readlink -f "${BASH_SOURCE[0]}")"))"
 SLURM_ACCOUNT="rabl"
 IMAGES_DIR="/hpi/fs00/share/fg-rabl/delab-images"
+TIME="36:00:00"
 
 node_config=("INTEL2" "AMD1")
 declare -A nodenames
