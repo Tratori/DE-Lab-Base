@@ -7,6 +7,8 @@ Supported features are:
 - **perf-cpp** wrapper
 - **json output** handling
 
+The repository contains a **small join operator comparison** between a **"hash join"** and **"nested loop join"**. This can be used as an orientation for own implementations.
+
 # Getting Started
 To build this project locally, simply execute the following commands:
 
